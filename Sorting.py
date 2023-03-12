@@ -1,10 +1,9 @@
-def insertionSort1(n, arr):     #####   insertionSort1 sort #########
+def insertionSort1(arr, n):     #####   insertionSort1 sort #########
     for i in range(1,n):
         key = arr[i]
         j = i-1
 
         while j>=0 and arr[j]>key:
-            print(arr[j])
             arr[j+1] =arr[j]
             j-=1
 
@@ -15,7 +14,6 @@ def insertionSort1(n, arr):     #####   insertionSort1 sort #########
 
 def Selection_Sort(arr,n):   #####   Selection_Sort sort #########
     for i in range(0,n-1):
-        print(i)
         min =  i
         for j in  range(i+1,n):
             if arr[j] < arr[min]:
@@ -116,6 +114,17 @@ def mergeSort(arr,left,right):
 
  #####   end of merge sort #########
 
+def hybird_merge_sort(arr,left,right,THRESHOLD):
+    if left<right:
+        mid = (right+left)//2
+        if THRESHOLD==mid:
+            Selection_Sort(arr,len(arr))
+        else:
+            hybird_merge_sort(arr, left, mid,THRESHOLD)
+            hybird_merge_sort(arr,mid+1,right,THRESHOLD)
+            merge(arr,left,mid,right)
+
+
 
 def main():
     print("array befor sorting is = ",end="")       ##merge##
@@ -123,36 +132,39 @@ def main():
     arrheap = [100,3,6,9,-30,205,155]
     arrSelct = [100,3,6,9,-30,205,155]
     arrInsert = [100,3,6,9,-30,205,155]
+    arrHyird = [100,3,6,9,-30,205,155]
     print(arr)
     mergeSort(arr,0,len(arr)-1)
     print("array after sorting is = ",end="")
     print(arr)
-
     print("-"*70)
-
     print("array before heap sort is = ",end="") ##HEAP##
     print(arrheap)
     heapSort(arrheap,len(arrheap))
     print("array after heap sort is = ",end="")
     print(arrheap)
-
-    print("-"*70)
-
     print("array before Selection sort is = ",end="") ##HEAP##
     print(arrSelct)
     heapSort(arrheap,len(arrheap))
     print("array after Selection sort is = ",end="")
     print(arrSelct)
-
-    print("-"*70)
-
     print("array before Insertion sort is = ",end="") ##HEAP##
     print(arrInsert)
     heapSort(arrheap,len(arrheap))
     print("array after Insertion sort is = ",end="")
     print(arrInsert)
-
     print("-"*70)
+    print("array before Insertion sort is = ",end="") ##insertionSort1##
+    print(arrInsert)
+    insertionSort1(arrInsert,len(arrInsert))
+    print("array after Insertion sort is = ",end="")
+    print(arrInsert)
+    print("-"*70)
+    print("array before Hybird merge sort  is = ",end="") ##insertionSort1##
+    print(arrHyird)
+    hybird_merge_sort(arrHyird,0,len(arrHyird)-1,2)
+    print("array after Hybird merge sort is = ",end="")
+    print(arrHyird)
 
 
 
@@ -161,3 +173,4 @@ if __name__ == "__main__":
 
 
   
+
