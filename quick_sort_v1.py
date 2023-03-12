@@ -1,10 +1,10 @@
 import random
-import numpy as np
+
 
 def quick_sort(arr, start, end):
     #Base case
     if start>=end:
-        return 1
+        return 
     
     #divide
     random_idx = random.randint(start, end)
@@ -24,13 +24,13 @@ def quick_sort(arr, start, end):
                 duplicates = False
                 break
         if duplicates:
-            return 1
+            return
 
 
 
     #recursion
-    a = quick_sort(arr, start, separator-1)
-    b = quick_sort(arr, separator, end)
-    return a+b + 1
+    quick_sort(arr, start, separator-1)
+    quick_sort(arr, separator, end)
+    return 
 
 

@@ -1,11 +1,10 @@
 import random
-import numpy as np
 
 def quick_sort(arr, start, end):
     
     #Base case
     if start>=end:
-        return 1
+        return
     
     #divide
     random_idx = random.randint(start, end)
@@ -22,9 +21,9 @@ def quick_sort(arr, start, end):
 
 
     #recursion
-    a = quick_sort(arr, start, separator-1)
-    b = quick_sort(arr, separator+1, end)
-    return a+b + 1
+    quick_sort(arr, start, separator-1)
+    quick_sort(arr, separator+1, end)
+    return
 
 
 
