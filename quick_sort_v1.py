@@ -2,7 +2,6 @@ import random
 import numpy as np
 
 def quick_sort(arr, start, end):
-    
     #Base case
     if start>=end:
         return 1
