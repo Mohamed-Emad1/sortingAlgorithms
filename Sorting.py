@@ -117,39 +117,47 @@ def mergeSort(arr,left,right):
  #####   end of merge sort #########
 
 
+def main():
+    print("array befor sorting is = ",end="")       ##merge##
+    arr = [100,3,6,9,-30,205,155]
+    arrheap = [100,3,6,9,-30,205,155]
+    arrSelct = [100,3,6,9,-30,205,155]
+    arrInsert = [100,3,6,9,-30,205,155]
+    print(arr)
+    mergeSort(arr,0,len(arr)-1)
+    print("array after sorting is = ",end="")
+    print(arr)
 
-print("array befor sorting is = ",end="")       ##merge##
-arr = [100,3,6,9,-30,205,155]
-arrheap = [100,3,6,9,-30,205,155]
-arrSelct = [100,3,6,9,-30,205,155]
-arrInsert = [100,3,6,9,-30,205,155]
-print(arr)
-mergeSort(arr,0,len(arr)-1)
-print("array after sorting is = ",end="")
-print(arr)
+    print("-"*70)
 
-print("-"*70)
+    print("array before heap sort is = ",end="") ##HEAP##
+    print(arrheap)
+    heapSort(arrheap,len(arrheap))
+    print("array after heap sort is = ",end="")
+    print(arrheap)
 
-print("array before heap sort is = ",end="") ##HEAP##
-print(arrheap)
-heapSort(arrheap,len(arrheap))
-print("array after heap sort is = ",end="")
-print(arrheap)
+    print("-"*70)
 
-print("-"*70)
+    print("array before Selection sort is = ",end="") ##HEAP##
+    print(arrSelct)
+    heapSort(arrheap,len(arrheap))
+    print("array after Selection sort is = ",end="")
+    print(arrSelct)
 
-print("array before Selection sort is = ",end="") ##HEAP##
-print(arrSelct)
-heapSort(arrheap,len(arrheap))
-print("array after Selection sort is = ",end="")
-print(arrSelct)
+    print("-"*70)
 
-print("-"*70)
+    print("array before Insertion sort is = ",end="") ##HEAP##
+    print(arrInsert)
+    heapSort(arrheap,len(arrheap))
+    print("array after Insertion sort is = ",end="")
+    print(arrInsert)
 
-print("array before Insertion sort is = ",end="") ##HEAP##
-print(arrInsert)
-heapSort(arrheap,len(arrheap))
-print("array after Insertion sort is = ",end="")
-print(arrInsert)
+    print("-"*70)
 
-print("-"*70)
+
+
+if __name__ == "__main__":
+    main()
+
+
+  
