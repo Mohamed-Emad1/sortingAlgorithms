@@ -42,6 +42,8 @@ test3 = "mergeSort(arr3, 0, len(arr3)-1)"
 
 test4 = "quick_sort_v3.quicksort(arr4, 0, len(arr4)-1)"
 
+print("fixing a bug in the cmd")
+
 
 
 
