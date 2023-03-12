@@ -34,8 +34,4 @@ def quick_sort(arr, start, end):
     b = quick_sort(arr, separator, end)
     return a+b + 1
 
-arr = np.random.randint(0, 100000, size=(10000,))
-
-k = quick_sort(arr, 0, len(arr)-1)
-print(k)
 
