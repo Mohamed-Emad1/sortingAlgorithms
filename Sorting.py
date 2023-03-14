@@ -1,3 +1,6 @@
+import random
+import time
+import random
 def insertionSort1(arr, n):     #####   insertionSort1 sort #########
     for i in range(1,n):
         key = arr[i]
@@ -32,9 +35,9 @@ def heapify(arr,size,i):        #####   heap sort #########
     right = (2*i)+2
 
     if left<size and arr[max] < arr[left]:
-        max =left                           # take the max number
+        max = left                           # take the max number
     if right< size and arr[max] <arr[right]:
-        max=right
+        max = right
     if i!=max:
         temp = arr[i]
         arr[i] = arr[max]
@@ -127,44 +130,55 @@ def hybird_merge_sort(arr,left,right,THRESHOLD):
 
 
 def main():
-    print("array befor sorting is = ",end="")       ##merge##
-    arr = [100,3,6,9,-30,205,155]
-    arrheap = [100,3,6,9,-30,205,155]
-    arrSelct = [100,3,6,9,-30,205,155]
-    arrInsert = [100,3,6,9,-30,205,155]
-    arrHyird = [100,3,6,9,-30,205,155]
-    print(arr)
+
+    print("time for merge sort  = ",end="")       ##merge##
+    arr = [random.randint(-1000,1000) for i in range(0,100000)]
+    arrheap = [random.randint(-1000,1000) for i in range(0,100000)]
+    arrSelct = [random.randint(-1000,1000) for i in range(0,1000)]
+    arrInsert = [random.randint(-1000,1000) for i in range(0,1000)]
+    arrHyird = [random.randint(-1000,1000) for i in range(0,10000)]
+    #print(arr)
+    start = time.time()
     mergeSort(arr,0,len(arr)-1)
-    print("array after sorting is = ",end="")
-    print(arr)
+    end = time.time()
+    print("merge time = ", end="")
+    print(end-start)
+
     print("-"*70)
-    print("array before heap sort is = ",end="") ##HEAP##
-    print(arrheap)
+
+    start = time.time()
     heapSort(arrheap,len(arrheap))
-    print("array after heap sort is = ",end="")
-    print(arrheap)
-    print("array before Selection sort is = ",end="") ##HEAP##
-    print(arrSelct)
-    heapSort(arrheap,len(arrheap))
-    print("array after Selection sort is = ",end="")
-    print(arrSelct)
-    print("array before Insertion sort is = ",end="") ##HEAP##
-    print(arrInsert)
-    heapSort(arrheap,len(arrheap))
-    print("array after Insertion sort is = ",end="")
-    print(arrInsert)
+    end = time.time()
+    print("heap time = ", end="")
+    print(end - start)
+
+    print("-" * 70)
+
+    start = time.time()
+    Selection_Sort(arrSelct,len(arrSelct))
+    end = time.time()
+    print("selection time = ", end="")
+    print(end - start)
+
+
+    print("-" * 70)
+
+
     print("-"*70)
-    print("array before Insertion sort is = ",end="") ##insertionSort1##
-    print(arrInsert)
+
+    start = time.time()
     insertionSort1(arrInsert,len(arrInsert))
-    print("array after Insertion sort is = ",end="")
-    print(arrInsert)
+    end = time.time()
+    print("Insertion time = ", end="")
+    print(end - start)
+
     print("-"*70)
-    print("array before Hybird merge sort  is = ",end="") ##insertionSort1##
-    print(arrHyird)
+
+    start = time.time()
     hybird_merge_sort(arrHyird,0,len(arrHyird)-1,2)
-    print("array after Hybird merge sort is = ",end="")
-    print(arrHyird)
+    end = time.time()
+    print("hypird merge time = ", end="")
+    print(end - start)
 
 
 
