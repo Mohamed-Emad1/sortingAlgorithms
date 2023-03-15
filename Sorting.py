@@ -117,6 +117,7 @@ def mergeSort(arr, left, right):
         mergeSort(arr, left, mid)
         mergeSort(arr, mid + 1, right)
         merge(arr, left, mid, right)
+    return arr
 
 
 #####   end of merge sort #########
@@ -124,24 +125,29 @@ def mergeSort(arr, left, right):
 def hybird_merge_sort(arr, left, right, THRESHOLD):
     if left < right:
         mid =(right + left) // 2
-        if THRESHOLD <= mid:
-            Selection_Sort(arr, len(arr))
+        if THRESHOLD >= mid:
+            #return print(Selection_Sort(arr, len(arr)))
+            return  Selection_Sort(arr , len(arr))
         else:
             hybird_merge_sort(arr, left, mid, THRESHOLD)
             hybird_merge_sort(arr, mid + 1, right, THRESHOLD)
             merge(arr, left, mid, right)
 
+    return arr
 
 def main():
-    print("time for merge sort  = ", end="")  ##merge##
-    arr = [random.randint(-1000, 1000) for i in range(0, 100000)]
+
+    arr = [random.randint(-1000, 1000) for i in range(0, 100)]
     arrheap = [random.randint(-1000, 1000) for i in range(0, 100000)]
-    arrSelct = [random.randint(-1000, 1000) for i in range(0, 10000)]
-    arrInsert = [random.randint(-1000, 1000) for i in range(0, 10000)]
-    arrHyird = [random.randint(-1000, 1000) for i in range(0, 10000)]
+    arrSelct = [random.randint(-1000, 1000) for i in range(0, 550)]
+    arrInsert = [random.randint(-1000, 1000) for i in range(0, 1000)]
+    arrHyird = [random.randint(-1000, 1000) for i in range(0, 550)]
+
+    print("time for merge sort  = ", end="")  ##merge##
     # print(arr)
     start = time.time()
     mergeSort(arr, 0, len(arr) - 1)
+
     end = time.time()
     print("merge time = ", end="")
     print(end - start)
@@ -164,8 +170,6 @@ def main():
 
     print("-" * 70)
 
-    print("-" * 70)
-
     start = time.time()
     insertionSort1(arrInsert, len(arrInsert))
     end = time.time()
@@ -175,10 +179,11 @@ def main():
     print("-" * 70)
 
     start = time.time()
-    hybird_merge_sort(arrHyird, 0, len(arrHyird) - 1, 2)
+    hybird_merge_sort(arrHyird, 0, len(arrHyird)- 1, 8)
     end = time.time()
     print("hypird merge time = ", end="")
     print(end - start)
+
 
 
 if __name__ == "__main__":
