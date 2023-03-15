@@ -123,7 +123,7 @@ def mergeSort(arr, left, right):
 
 def hybird_merge_sort(arr, left, right, THRESHOLD):
     if left < right:
-        mid = (right + left) // 2
+        mid =(right + left) // 2
         if THRESHOLD <= mid:
             Selection_Sort(arr, len(arr))
         else:
