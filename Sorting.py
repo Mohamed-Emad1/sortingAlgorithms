@@ -123,25 +123,35 @@ def mergeSort(arr, left, right):
 #####   end of merge sort #########
 
 def hybird_merge_sort(arr, left, right, THRESHOLD):
-    if left < right:
-        mid =(right + left) // 2
-        if THRESHOLD >= mid:
-            #return print(Selection_Sort(arr, len(arr)))
-            return  Selection_Sort(arr , len(arr))
-        else:
-            hybird_merge_sort(arr, left, mid, THRESHOLD)
-            hybird_merge_sort(arr, mid + 1, right, THRESHOLD)
-            merge(arr, left, mid, right)
+    if right-left  > THRESHOLD:
+        mid = (right + left) // 2
+        hybird_merge_sort(arr, left, mid, THRESHOLD)
+        hybird_merge_sort(arr, mid + 1, right, THRESHOLD)
+        merge(arr, left, mid, right)
+        return arr
+    else:
+        Selection_Sort(arr [left:right+1],right-left)
 
-    return arr
+
+    # if  left+1 <right:
+    #     mid = (right + left) // 2
+    #         #return  Selection_Sort(arr , len(arr))
+    #
+    #     hybird_merge_sort(arr, left, mid, THRESHOLD)
+    #     hybird_merge_sort(arr, mid + 1, right, THRESHOLD)
+    #     merge(arr, left, mid, right)
+    # else:
+    #      print(Selection_Sort(arr[left:right + 1], len(arr[left:right + 1])))
+    #
+    # return arr
 
 def main():
 
-    arr = [random.randint(-1000, 1000) for i in range(0, 100)]
+    arr = [random.randint(-1000, 1000) for i in range(0, 10000)]
     arrheap = [random.randint(-1000, 1000) for i in range(0, 100000)]
     arrSelct = [random.randint(-1000, 1000) for i in range(0, 550)]
     arrInsert = [random.randint(-1000, 1000) for i in range(0, 1000)]
-    arrHyird = [random.randint(-1000, 1000) for i in range(0, 550)]
+    arrHyird = [random.randint(-1000, 1000) for i in range(0, 10000)]
 
     print("time for merge sort  = ", end="")  ##merge##
     # print(arr)
