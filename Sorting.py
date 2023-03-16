@@ -1,7 +1,4 @@
 import time
-import random
-
-
 def insertionSort1(arr, n):  #####   insertionSort1 sort #########
     for i in range(1, n):
         key = arr[i]
@@ -16,6 +13,34 @@ def insertionSort1(arr, n):  #####   insertionSort1 sort #########
 
     #####   end of insertionSort1 sort #########
 
+import random
+def quick_select(arr, start, end, k):
+    print(end-start + 1)
+    if start >= end:
+        if start == end == k:
+            return start
+        return
+    random_idx = random.randint(start, end)
+    separator = partition(arr, start, end, random_idx)
+    if separator == k:
+        return separator
+    elif separator < k:
+        return quick_select(arr, separator+1, end, k)
+    else:
+        return quick_select(arr, start, separator-1, k)
+
+
+def partition(arr, start, end, pivot_idx):
+    pivot = arr[pivot_idx]
+    arr[pivot_idx], arr[end] = arr[end], arr[pivot_idx]
+    separator = start
+    for i in range(start, end):
+        if arr[i] < pivot:
+            arr[i], arr[separator] = arr[separator], arr[i]
+            separator+=1
+
+    arr[end], arr[separator] = arr[separator], arr[end]
+    return separator
 
 def Selection_Sort(arr, n):  #####   Selection_Sort sort #########
     for i in range(0, n - 1):
@@ -111,6 +136,28 @@ def merge(arr, left, mid, right):  #####  merge sort #########
         j += 1
 
 
+def quick_sort(arr, start, end):
+    # Base case
+    if start >= end:
+        return
+
+    # divide
+    random_idx = random.randint(start, end)
+    pivot = arr[random_idx]
+    arr[random_idx], arr[end] = arr[end], arr[random_idx]
+    separator = start
+    for i in range(start, end):
+        if arr[i] < pivot:
+            arr[i], arr[separator] = arr[separator], arr[i]
+            separator += 1
+
+    arr[end], arr[separator] = arr[separator], arr[end]
+
+    # recursion
+    quick_sort(arr, start, separator - 1)
+    quick_sort(arr, separator + 1, end)
+    return
+
 def mergeSort(arr, left, right):
     if left < right:
         mid = (right + left) // 2
@@ -122,7 +169,7 @@ def mergeSort(arr, left, right):
 
 #####   end of merge sort #########
 
-def hybird_merge_sort(arr, left, right, THRESHOLD):
+def hybird_merge_sort(arr, left, right, THRESHOLD): # 2
     if right-left  > THRESHOLD:
         mid = (right + left) // 2
         hybird_merge_sort(arr, left, mid, THRESHOLD)
@@ -147,11 +194,12 @@ def hybird_merge_sort(arr, left, right, THRESHOLD):
 
 def main():
 
-    arr = [random.randint(-1000, 1000) for i in range(0, 10000)]
-    arrheap = [random.randint(-1000, 1000) for i in range(0, 100000)]
-    arrSelct = [random.randint(-1000, 1000) for i in range(0, 550)]
+    arr = [random.randint(-1000, 1000) for i in range(0, 100000)]
+    arrheap = [random.randint(-1000, 1000) for i in range(0, 10000)]
+    arrSelct = [random.randint(-1000, 1000) for i in range(0, 1000)]
     arrInsert = [random.randint(-1000, 1000) for i in range(0, 1000)]
     arrHyird = [random.randint(-1000, 1000) for i in range(0, 10000)]
+    arr_quick = [random.randint(-1000, 1000) for i in range(0, 10000)]
 
     print("time for merge sort  = ", end="")  ##merge##
     # print(arr)
@@ -194,7 +242,11 @@ def main():
     print("hypird merge time = ", end="")
     print(end - start)
 
-
+    start = time.time()
+    quick_sort(arr_quick,0,len(arr_quick)-1)
+    end = time.time()
+    print("quick time = ", end="")
+    print(end - start)
 
 if __name__ == "__main__":
     main()
