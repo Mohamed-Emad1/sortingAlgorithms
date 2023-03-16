@@ -5,7 +5,7 @@ import numpy as np
 def quick_select_wrapper(arr, k):
     if k > len(arr) or k < 1:
         print("Error invalid value for K")
-        return -1
+        return None
     return arr[quick_select(arr, 0, len(arr)-1, k-1)]
     
 
@@ -40,3 +40,6 @@ def partition(arr, start, end, pivot_idx):
 
 
 
+# arr = [-1 ,2 ,100, 4, 3, 1, 0, 20, 17]
+# print(quick_select_wrapper(arr, 10))
+# print(sorted(arr))
