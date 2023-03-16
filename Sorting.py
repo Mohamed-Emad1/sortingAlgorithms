@@ -1,4 +1,5 @@
 import time
+import random
 def insertionSort1(arr, n):  #####   insertionSort1 sort #########
     for i in range(1, n):
         key = arr[i]
@@ -13,7 +14,7 @@ def insertionSort1(arr, n):  #####   insertionSort1 sort #########
 
     #####   end of insertionSort1 sort #########
 
-import random
+
 def quick_select(arr, start, end, k):
     print(end-start + 1)
     if start >= end:
@@ -260,7 +261,8 @@ def quick_sort(arr, start, end):
         return
     
     #divide
-    random_idx = random.randint(start, end)
+    random_idx = int(random.uniform(0,1)*(end-start)) + start
+    #random_idx = random.randint(start, end)    
     pivot = arr[random_idx]
     arr[random_idx], arr[end] = arr[end], arr[random_idx]
     separator = start
