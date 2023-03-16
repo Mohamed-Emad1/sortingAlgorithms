@@ -3,7 +3,8 @@ import numpy as np
 
 
 def quick_select_wrapper(arr, k):
-    if k > len(arr):
+    if k > len(arr) or k < 1:
+        print("Error invalid value for K")
         return -1
     return arr[quick_select(arr, 0, len(arr)-1, k-1)]
     
