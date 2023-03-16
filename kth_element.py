@@ -1,6 +1,15 @@
 import random
+import numpy as np
+
+
+def quick_select_wrapper(arr, k):
+    if k > len(arr):
+        return -1
+    return arr[quick_select(arr, 0, len(arr)-1, k-1)]
+    
+
+
 def quick_select(arr, start, end, k):
-    print(end-start + 1)
     if start >= end:
         if start == end == k:
             return start
