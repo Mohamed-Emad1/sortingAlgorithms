@@ -1,6 +1,7 @@
 import numpy as np
 import time 
 import Sorting
+import hybrid_test
 
 def test_algorithms():
     array_sizes = [1000, 2000, 4000, 8000, 15_000, 25_000, 50_000, 100_000]
@@ -39,6 +40,13 @@ def test_algorithms():
         start_time = time.time()
         Sorting.Selection_Sort(arr, array_size)
         print("Selection Sort: ", time.time() - start_time)
+
+
+        #Hybrid Sort
+        arr = random_arr.tolist()
+        start_time = time.time()
+        hybrid_test.hybird_merge_sort(arr, 0, array_size-1, 5)
+        print("Hybrid Sort: ", time.time() - start_time)
 
         print("\n\n\n")
 

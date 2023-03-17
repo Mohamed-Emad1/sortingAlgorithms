@@ -171,14 +171,15 @@ def mergeSort(arr, left, right):
 #####   end of merge sort #########
 
 def hybird_merge_sort(arr, left, right, THRESHOLD): # 2
-    if right-left  > THRESHOLD:
+    if right-left + 1  > THRESHOLD:
         mid = (right + left) // 2
         hybird_merge_sort(arr, left, mid, THRESHOLD)
         hybird_merge_sort(arr, mid + 1, right, THRESHOLD)
         merge(arr, left, mid, right)
         return arr
     else:
-        Selection_Sort(arr [left:right+1],right-left)
+        sub_arr = Selection_Sort(arr[left:right+1],right-left+1)
+        arr[left:right+1] = sub_arr
 
 
     # if  left+1 <right:
